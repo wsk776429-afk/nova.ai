@@ -1,0 +1,118 @@
+import WarperHeader from "@/components/WarperHeader";
+import WarperFooter from "@/components/WarperFooter";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { MessageSquare, Image, Bot, Sparkles, Volume2, FileText, Wand2 } from "lucide-react";
+
+const Index = () => {
+  return (
+    <div className="min-h-screen bg-background flex flex-col">
+      <WarperHeader />
+      
+      <main className="flex-1 container mx-auto px-4 py-6">
+        <div className="mb-8 text-center">
+          <h2 className="text-2xl md:text-3xl font-bold mb-2">
+            <span className="text-foreground">Welcome to </span>
+            <span className="text-primary glow-text">Warper AI</span>
+          </h2>
+          <p className="text-muted-foreground text-sm max-w-xl mx-auto">
+            Your intelligent assistant powered by multiple specialized agents.
+          </p>
+        </div>
+
+        {/* Navigation Cards */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto mb-8">
+          {/* Chat Page Card */}
+          <Link to="/chat" className="group">
+            <div className="bg-card rounded-xl border border-border p-6 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/10 h-full">
+              <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <Bot className="w-7 h-7 text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">AI Chat Agents</h3>
+              <p className="text-muted-foreground text-sm mb-4">
+                Chat with 12 specialized AI agents for math, coding, finance, and more.
+              </p>
+              <Button className="w-full gap-2">
+                <MessageSquare className="w-4 h-4" />
+                Open Chat
+              </Button>
+            </div>
+          </Link>
+
+          {/* Voice Assistant Card */}
+          <Link to="/voice" className="group">
+            <div className="bg-card rounded-xl border border-border p-6 hover:border-chart-3/50 transition-all hover:shadow-lg hover:shadow-chart-3/10 h-full">
+              <div className="w-14 h-14 rounded-full bg-chart-3/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <Volume2 className="w-7 h-7 text-chart-3" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Voice Assistant</h3>
+              <p className="text-muted-foreground text-sm mb-4">
+                Talk to AI with real-time voice. Choose male or female voice.
+              </p>
+              <Button variant="outline" className="w-full gap-2">
+                <Volume2 className="w-4 h-4" />
+                Start Talking
+              </Button>
+            </div>
+          </Link>
+
+          {/* Image Page Card */}
+          <Link to="/image" className="group">
+            <div className="bg-card rounded-xl border border-border p-6 hover:border-accent/50 transition-all hover:shadow-lg hover:shadow-accent/10 h-full">
+              <div className="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <Image className="w-7 h-7 text-accent" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">AI Image Studio</h3>
+              <p className="text-muted-foreground text-sm mb-4">
+                Generate stunning AI images with HD, 4K, and Ultra Photoreal.
+              </p>
+              <Button variant="secondary" className="w-full gap-2">
+                <Sparkles className="w-4 h-4" />
+                Open Studio
+              </Button>
+            </div>
+          </Link>
+
+          {/* Tools Card */}
+          <Link to="/tools" className="group">
+            <div className="bg-card rounded-xl border border-border p-6 hover:border-chart-4/50 transition-all hover:shadow-lg hover:shadow-chart-4/10 h-full">
+              <div className="w-14 h-14 rounded-full bg-chart-4/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <Wand2 className="w-7 h-7 text-chart-4" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">PDF & Photo Tools</h3>
+              <p className="text-muted-foreground text-sm mb-4">
+                View PDFs and enhance photos with AI. Professional quality.
+              </p>
+              <Button variant="outline" className="w-full gap-2">
+                <FileText className="w-4 h-4" />
+                Open Tools
+              </Button>
+            </div>
+          </Link>
+        </div>
+
+        {/* Stats Row */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-6xl mx-auto">
+          {[
+            { label: "Active Users", value: "10K+", color: "text-primary" },
+            { label: "Voice Chats", value: "100K+", color: "text-chart-3" },
+            { label: "Images Generated", value: "500K+", color: "text-accent" },
+            { label: "Tools Used", value: "50K+", color: "text-chart-4" },
+          ].map((stat) => (
+            <div
+              key={stat.label}
+              className="bg-card rounded-lg border border-border p-3 text-center"
+            >
+              <p className={`text-xl font-bold ${stat.color}`}>{stat.value}</p>
+              <p className="text-xs text-muted-foreground">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+      </main>
+
+      <WarperFooter />
+    </div>
+  );
+};
+
+export default Index;
